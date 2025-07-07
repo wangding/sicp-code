@@ -58,16 +58,76 @@ odds = [1, 3, 5, 7, 9]
 [x for x in odds if 25 % x == 0] # [1, 5]
 
 # 聚合
-def divisors(n):
-  # return [1] + [x for x in range(2, n) if n % x == 0]
-  return [x for x in range(1, n) if n % x == 0]
+def divisors(n): return [x for x in range(1, n) if n % x == 0]
 
 divisors(4) # [1, 2]
 divisors(12) # [1, 2, 3, 4, 6]
 
-[n for n in range(1, 1000) if sum(divisors(n)) == n] # 完美数 [1, 6, 28, 496]
+# 完美数 [1, 6, 28, 496]
+# 完美数是等于其约数之和的正整数
+[n for n in range(1, 1000) if sum(divisors(n)) == n]
+
+# 在给定面积的情况下计算具有整数边长的矩形的最小周长
+def divisors(n): return [x for x in range(1, n) if n % x == 0]
+def width(area, height):
+  assert area % height == 0
+  return area // height
+
+def perimeter(width, height): return 2 * width + 2 * height
+
+def minimum_perimeter(area):
+  heights = divisors(area)
+  perimeters = [perimeter(width(area, h), h) for h in heights]
+  return min(perimeters)
+
+area = 80
+width(area, 5) # 16
+perimeter(16, 5) # 42
+perimeter(10, 8) # 36
+minimum_perimeter(area) # 36
+[minimum_perimeter(n) for n in range(1, 10)] # [4, 6, 8, 8, 12, 10, 16, 12, 12]
+
+# map, filter, reduce ... 等案例，意思都明白，有待整理
 
 # 2.3.4 序列抽象
+
+# 成员资格
+digits = [1, 8, 2, 8]
+2 in digits # True
+1828 not in digits # True
+
+# 切片
+digits[0:2] # [1, 8]
+digits[1:] # [8, 2, 8]
+
+
 # 2.3.5 字符串
+
+'I am string!'
+"I've got an apostrophe"
+'您好'
+
+city = 'Berkeley'
+len(city) # 8
+city[3] # 'k'
+
+'Berkeley' + ', CA' # 'Berkeley, CA'
+'Shabu ' * 2 # 'Shabu Shabu '
+
+'here' in "Where's Waldo?" # True
+
+# 多行字面量
+"""The Zen of Python
+claims, Readability counts.
+Read more: import this."""
+
+# 类型转换
+str(2) + ' is an element of ' + str(digits) # '2 is an element of [1, 8, 2, 8]'
+
 # 2.3.6 树
+
+# todo 有待整理
+
 # 2.3.7 链表
+
+# todo 有待整理
