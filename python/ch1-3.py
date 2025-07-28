@@ -4,7 +4,7 @@
 from operator import add, mul
 def square(x): return mul(x, x)
 
-# test
+'''test'''
 square(21) # 441
 square(add(2, 5)) # 49
 square(square(3)) # 81
